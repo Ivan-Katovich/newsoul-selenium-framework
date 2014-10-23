@@ -197,7 +197,7 @@ public class WebElementsShop {
     	}
     }
     
-    public static void assertElementPosition(MyElement myElement, String elementText, int expectedPosition, WebDriver driver) {
+    public static void assertElementWithTextPosition(MyElement myElement, String elementText, int expectedPosition, WebDriver driver) {
     	log.info("enter to function assertElementPosition");
     	Options options = new Options();
 		options.setDriver(driver);
@@ -214,6 +214,36 @@ public class WebElementsShop {
 			} else {
 				if (position == -2) {
 					log.error("More than one element with expected text " );
+					MultiServices.errorShutdown(options);
+				} else {
+					if (position != expectedPosition) {
+						log.error("Item position is " + position + " but expected " + expectedPosition);
+						MultiServices.errorShutdown(options);
+					} else {
+						log.info("Item position is " + position + " is equal to expected " + expectedPosition);
+					}
+				}
+			}
+		}
+    }
+    
+    public static void assertElementContainsTextPosition(MyElement myElement, String elementText, int expectedPosition, WebDriver driver) {
+    	log.info("enter to function assertElementPosition");
+    	Options options = new Options();
+		options.setDriver(driver);
+		options.setMyElement(myElement);
+		options.setText(elementText);
+		int position = WebElementsServices.getElementContainsTextPosition(options);
+		if (position == -1) {
+			log.error("Element has not right type " );
+			MultiServices.errorShutdown(options);
+		} else {
+			if (position == 0) {
+				log.error("Noone element contains expected text " );
+				MultiServices.errorShutdown(options);
+			} else {
+				if (position == -2) {
+					log.error("More than one element contain expected text " );
 					MultiServices.errorShutdown(options);
 				} else {
 					if (position != expectedPosition) {

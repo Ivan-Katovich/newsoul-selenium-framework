@@ -23,6 +23,7 @@ public class Options {
 	private MyElement myElement;
 	private String text;
 	private String name;
+	private Integer number;
 	private static final Logger log = Logger.getLogger(Options.class);
 	
 	public Options() {}
@@ -116,6 +117,15 @@ public class Options {
 	public void setName(String attributeName) {
 		this.name = attributeName;
 	}
+
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+	
 	
 	
 	

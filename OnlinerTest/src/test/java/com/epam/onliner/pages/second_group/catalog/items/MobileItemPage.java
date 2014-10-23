@@ -32,8 +32,9 @@ public class MobileItemPage extends CatalogItemTypePage{
 //		Select sel = new Select(driver.findElement(By.xpath(manufacturerDmenu.getXpath())));
 //		sel.selectByVisibleText("Apple");
 //		WebElementsShop.clickOnElement(manufacturerDmenuApple, driver);
-		WebElementsShop.setElementAttributeValue(manufacturerDmenu, "class", "psi2", driver);		
-		WebElementsShop.assertElementAttributeHasValue(manufacturerDmenu, "class", "psi", driver);
+		WebElementsShop.setElementAttributeValue(manufacturerDmenu, "class", "psi2", driver);	
+		Thread.sleep(1000);
+		WebElementsShop.assertElementAttributeHasValue(manufacturerDmenu, "class", "psi2", driver);
 
 	}
 

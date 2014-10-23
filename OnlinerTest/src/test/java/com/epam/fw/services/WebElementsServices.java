@@ -234,5 +234,33 @@ public class WebElementsServices {
     		return -1;
     	}
     }
+    
+    public static int getElementContainsTextPosition(Options options) {
+    	log.info("enter to function getElementPosition ");
+    	String itemType = options.getMyElement().getType();
+    	int matchNumber = 0;
+    	int position = 0;
+    	if (itemType == "groupOfElements") {
+    		List<WebElement>elements = options.getDriver().findElements(By.xpath(options.getMyElement().getXpath()));
+    		for (WebElement element : elements) {
+    			if (element.getText().indexOf(options.getText()) != -1) {
+    				position = elements.indexOf(element) + 1;
+    				matchNumber =+ 1;
+    			}
+    		}
+    		if (matchNumber == 0) {
+    			return 0;
+    		} else {
+    			if (matchNumber > 1) {
+    				return -2;
+    			} else {
+    				return position;
+    			}
+    		}
+    	} else {
+    		log.info("Item type is " + itemType + " but needed groupOfElements ");
+    		return -1;
+    	}
+    }
      
 }
