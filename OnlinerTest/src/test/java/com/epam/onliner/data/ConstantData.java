@@ -2,6 +2,8 @@ package com.epam.onliner.data;
 
 import java.util.ResourceBundle;
 
+import com.epam.fw.object.MyElement;
+
 public final class ConstantData {
 	
 	//property file
@@ -17,6 +19,9 @@ public final class ConstantData {
 	public static final String REALTY_URI = "http://realt.onliner.by/";
 	public static final String FLEA_MAEKET_PAGE_URI = "http://baraholka.onliner.by/";
 	public static final String FORUM_PAGE_URI = "http://forum.onliner.by/";
+	
+	//elements
+	public static final MyElement TOP_LOGO = new MyElement("topLogo", "//img[@class='onliner_logo retina-off']", "webelement");
 	
 	//timeout
 	public static final int TIME_OUT = 15000;

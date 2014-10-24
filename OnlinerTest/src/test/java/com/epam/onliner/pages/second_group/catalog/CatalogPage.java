@@ -20,9 +20,9 @@ public class CatalogPage extends SecondGroupPage {
 	
 	private static final Logger log = Logger.getLogger(CatalogPage.class);
 	
-	protected static final MyElement mobilePhonesLink = new MyElement("//div[@class='b-catalogmain']/ul[3]/li[1]//a[2]", "WebElement");
-	protected static final MyElement photoAndVideoTitle = new MyElement("//h1[@class='cm__h1'][4]", "title");
-	protected static final MyElement catalogAndPriceTitles = new MyElement("//h1[@class='cm__h1']", "groupOfElements");
+	protected static final MyElement mobilePhonesLink = new MyElement("mobilePhonesLink", "//div[@class='b-catalogmain']/ul[3]/li[1]//a[2]", "WebElement");
+	protected static final MyElement photoAndVideoTitle = new MyElement("photoAndVideoTitle", "//h1[@class='cm__h1'][4]", "title");
+	protected static final MyElement catalogAndPriceTitles = new MyElement("catalogAndPriceTitles", "//h1[@class='cm__h1']", "groupOfElements");
 	
 	
 	public CatalogPage(WebDriver driver) {

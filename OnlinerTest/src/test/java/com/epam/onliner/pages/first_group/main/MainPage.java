@@ -14,7 +14,6 @@ import com.epam.onliner.pages.Page;
 import com.epam.onliner.pages.first_group.FristGroupPage;
 
 import static com.epam.onliner.data.ConstantData.*;
-import static com.epam.onliner.elements.MainPageElements.*;
 
 public class MainPage extends FristGroupPage {
 	

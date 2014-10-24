@@ -15,14 +15,14 @@ public class PageShop {
 	private static final Logger log = Logger.getLogger(PageShop.class);
 	
 	public static void goToPage(String uri, WebDriver driver) {
-		log.info("enter to function goToPage");
+		log.info("enter to function goToPage with URL '" + uri + "'");
 		Options options = new Options();
 		options.setDriver(driver);
 		driver.get(uri);
 		if (PageServices.waitForPageLoaded(options)) {
 			log.info("Page was loaded");
 		} else {
-			log.error("page dont load");
+			log.error("page didn't load");
 			MultiServices.errorShutdown(options);
 		}
 	}
