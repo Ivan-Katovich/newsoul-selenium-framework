@@ -6,7 +6,7 @@ import com.epam.fw.object.MyElement;
 
 public abstract class Page {
 	
-	protected static final MyElement topLogo = new MyElement("//img[@class='onliner_logo retina-off']", "webelement");
+	protected static final MyElement topLogo = new MyElement("topLogo", "//img[@class='onliner_logo retina-off']", "webelement");
 	
 	protected final WebDriver driver;
 	

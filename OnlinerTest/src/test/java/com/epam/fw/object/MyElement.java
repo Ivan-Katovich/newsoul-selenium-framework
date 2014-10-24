@@ -7,10 +7,11 @@ public class MyElement {
 	
 	private String xpath;
 	private String type;
+	private String name;
 	
 	public MyElement() {}
 	
-	public MyElement(String xpath, String type) {
+	public MyElement(String name, String xpath, String type) {
 		this.xpath = xpath;
 		this.type = type;
 	}
@@ -30,6 +31,15 @@ public class MyElement {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	
 
 }
