@@ -14,7 +14,7 @@ public class FieldsServices {
 	private static final Logger log = Logger.getLogger(FieldsServices.class); 
 	
 	public static void selectDropdownMenu(Options options) {
-		log.info("enter to function selectDropdownMenu in fields services");
+		log.info("enter to function selectDropdownMenu in fields services with element '" + options.getMyElement().getName() + "'");
 		try {
 			if (!WebElementsServices.waitElementIsVisible(options)) {
 				log.error("No such field on this page");
@@ -31,7 +31,7 @@ public class FieldsServices {
 			}
 //			Select sel = new Select(options.getDriver().findElement(options.getSelector()));
 //			sel.selectByVisibleText(options.getText());
-			log.info("Complete field with value " + options.getText());
+			log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
 		} catch (Exception e) {
 			log.error("Something wrong" + e.getClass());
 			MultiServices.errorShutdown(options);
@@ -47,7 +47,7 @@ public class FieldsServices {
 			try {
 				options.getDriver().findElement(options.getSelector()).clear();
 				options.getDriver().findElement(options.getSelector()).sendKeys(options.getText());
-				log.info("Complete field with value " + options.getText());
+				log.info("Complete field '" + options.getMyElement().getName() + "' with value " + options.getText());
 			} catch (NoSuchElementException e) {
 				log.error("Something wrong " + e.getClass());
 				MultiServices.errorShutdown(options);

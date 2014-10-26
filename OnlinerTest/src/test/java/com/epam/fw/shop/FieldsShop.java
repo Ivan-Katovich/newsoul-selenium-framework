@@ -17,7 +17,7 @@ public class FieldsShop {
 	private static final Logger log = Logger.getLogger(FieldsShop.class);
 	  
     public static void fillFieldByValue(MyElement myElement, String value, WebDriver driver) {
-    	log.info("enter to function fillFieldByValue");
+    	log.info("enter to function fillFieldByValue '" + myElement.getName() + "'");
     	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
@@ -27,14 +27,14 @@ public class FieldsShop {
 			switch (myElement.getType()) {
 			case "text":
 				FieldsServices.sendTextToField(options);
-				log.info("Text entered");
+				log.info("Text entered in the textfield");
 				break;
 			case "dropdown":
 				FieldsServices.selectDropdownMenu(options);
-				log.info("Text entered");
+				log.info("Dropdown option is selected");
 				break;
 			default:
-				log.error("element is not visible" );
+				log.error("element is not field type" );
 			}
 		} else {
 			log.error("element is not visible" );
