@@ -23,17 +23,8 @@ public class WebElementsServices {
 	
 	private static final Logger log = Logger.getLogger(WebElementsServices.class); 
     
-    public static void waitElement(Options options) {
-    	Wait<WebDriver> wait = new FluentWait<WebDriver>(options.getDriver())
-    			.withMessage("Element was not found")
-    			.withTimeout(options.getTimeout(), TimeUnit.SECONDS)
-    			.pollingEvery(options.getPooling(), TimeUnit.SECONDS)
-    			.ignoring(NoSuchElementException.class);
-    	wait.until(ExpectedConditions.visibilityOf(options.getDriver().findElement(options.getSelector())));
-    }
-    
     public static boolean waitElementIsVisible(Options options) {
-    	log.info("enter to function waitElementIsVisible ");
+    	log.info("enter to function waitElementIsVisible with element '" + options.getMyElement().getName() + "'");
     	long time = new Date().getTime();
     	long endTime = time+options.getTimeout();
     	int pooling = options.getPooling(); 
@@ -45,10 +36,10 @@ public class WebElementsServices {
     		try {
     			WebElement element = options.getWebElement();
     			if (element.isDisplayed()) {
-    				log.info("element is displayed ");
+    				log.info("element '" + options.getMyElement().getName() + "' is displayed ");
     				return true;
     			} else {
-    				log.warn("element is not displayed now ");
+    				log.warn("element '" + options.getMyElement().getName() + "'is not displayed now ");
     				while (!element.isDisplayed() && time <= endTime) {
     					log.info(time + " lower " + endTime );
     					try {
@@ -59,10 +50,10 @@ public class WebElementsServices {
     					time = new Date().getTime();
     				}
     				if (time >= endTime) {
-    					log.error("Element is not displayed ");
+    					log.error("Element '" + options.getMyElement().getName() + "' is not displayed ");
     					return false;
     				} else {
-    					log.info("element is displayed now ");
+    					log.info("element '" + options.getMyElement().getName() + "' is displayed now ");
     					return true;
     				}
     			}
@@ -75,7 +66,7 @@ public class WebElementsServices {
     }
     
     public static boolean waitElementIsPresent(Options options) {
-    	log.info("enter to function waitElementIsPresent ");
+    	log.info("enter to function waitElementIsPresent with element '" + options.getMyElement().getName() + "'");
     	
     	long time = new Date().getTime();
     	long endTime = time+options.getTimeout();
@@ -87,10 +78,10 @@ public class WebElementsServices {
     	} else {
     		try {
     			if (options.getDriver().findElements(options.getSelector()).size()>0) {
-    				log.info("element is present ");
+    				log.info("element '" + options.getMyElement().getName() + "' is present ");
     				return true;
     			} else {
-    				log.warn("element is not present now ");
+    				log.warn("element '" + options.getMyElement().getName() + "' is not present now ");
     				while (options.getDriver().findElements(options.getSelector()).size()<1 && time <= endTime) {
     					log.info(time + " lower " + endTime );
     					try {
@@ -101,10 +92,10 @@ public class WebElementsServices {
     					time = new Date().getTime();
     				}
     				if (time >= endTime) {
-    					log.error("Element is not present ");
+    					log.error("Element '" + options.getMyElement().getName() + "' is not present ");
     					return false;
     				} else {
-    					log.info("element is present now ");
+    					log.info("element '" + options.getMyElement().getName() + "' is present now ");
     					return true;
     				}
     			}
@@ -117,7 +108,7 @@ public class WebElementsServices {
     }
     
     public static boolean waitElementIsNotVisible(Options options) {
-    	log.info("enter to function waitElementIsNotVisible ");
+    	log.info("enter to function waitElementIsNotVisible with element '" + options.getMyElement().getName() + "'");
     	long time = new Date().getTime();
     	long endTime = time+options.getTimeout();
     	int pooling = options.getPooling(); 
@@ -129,10 +120,10 @@ public class WebElementsServices {
     		try {
     			WebElement element = options.getWebElement();
     			if (!element.isDisplayed()) {
-    				log.info("element is not displayed ");
+    				log.info("element '" + options.getMyElement().getName() + "' is not displayed ");
     				return true;
     			} else {
-    				log.warn("element is displayed now ");
+    				log.warn("element '" + options.getMyElement().getName() + "' is displayed now ");
     				while (element.isDisplayed() && time <= endTime) {
     					log.info(time + " lower " + endTime );
     					try {
@@ -143,10 +134,10 @@ public class WebElementsServices {
     					time = new Date().getTime();
     				}
     				if (time >= endTime) {
-    					log.error("Element is displayed ");
+    					log.error("Element '" + options.getMyElement().getName() + "' is displayed ");
     					return false;
     				} else {
-    					log.info("element is not displayed now ");
+    					log.info("element '" + options.getMyElement().getName() + "' is not displayed now ");
     					return true;
     				}
     			}
@@ -159,7 +150,7 @@ public class WebElementsServices {
     }
     
     public static String getAttributeValue(Options options) {
-    	log.info("enter to function getAttributeValue ");
+    	log.info("enter to function getAttributeValue with element '" + options.getMyElement().getName() + "'");
     	try {
     		return options.getWebElement().getAttribute(options.getName());
     	} catch (Exception e) {
@@ -169,7 +160,7 @@ public class WebElementsServices {
     }
     
     public static String getElementText(Options options) {
-    	log.info("enter to function getText ");
+    	log.info("enter to function getText with element '" + options.getMyElement().getName() + "'");
     	try {
     		return options.getWebElement().getText();
     	} catch (Exception e) {
@@ -179,7 +170,7 @@ public class WebElementsServices {
     }
     
     public static boolean setAttributeValue(Options options) {
-    	log.info("enter to function setAttributeValue ");
+    	log.info("enter to function setAttributeValue with element '" + options.getMyElement().getName() + "'");
     	String xpath = options.getMyElement().getXpath();
     	try {
     		JavascriptExecutor executor = (JavascriptExecutor) options.getDriver();
@@ -197,7 +188,7 @@ public class WebElementsServices {
     }
     
     public static int getElementsNumber(Options options) {
-    	log.info("enter to function getElementsNumber ");
+    	log.info("enter to function getElementsNumber with elements '" + options.getMyElement().getName() + "'");
     	String itemType = options.getMyElement().getType();
     	if (itemType == "groupOfElements") {
     		return options.getDriver().findElements(By.xpath(options.getMyElement().getXpath())).size();
@@ -208,7 +199,7 @@ public class WebElementsServices {
     }
     
     public static int getElementWithTextPosition(Options options) {
-    	log.info("enter to function getElementPosition ");
+    	log.info("enter to function getElementWithTextPosition ");
     	String itemType = options.getMyElement().getType();
     	int matchNumber = 0;
     	int position = 0;
@@ -236,7 +227,7 @@ public class WebElementsServices {
     }
     
     public static int getElementContainsTextPosition(Options options) {
-    	log.info("enter to function getElementPosition ");
+    	log.info("enter to function getElementContainsTextPosition ");
     	String itemType = options.getMyElement().getType();
     	int matchNumber = 0;
     	int position = 0;
