@@ -1,6 +1,5 @@
 OnlinerTest/.settings/
 OnlinerTest/target/
-*spath
+.classpath
 .project
 .metadata/
-ivn.txt
