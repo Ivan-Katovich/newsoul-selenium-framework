@@ -1,0 +1,6 @@
+OnlinerTest/.settings/
+OnlinerTest/target/
+*spath
+.project
+.metadata/
+ivn.txt
