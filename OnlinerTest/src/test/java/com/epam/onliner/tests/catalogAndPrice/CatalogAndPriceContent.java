@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.epam.onliner.pages.second_group.catalog.CatalogPage;
 import com.epam.onliner.tests.BaseTestShell;
@@ -17,10 +18,19 @@ public class CatalogAndPriceContent extends BaseTestShell{
 	@Before
 	public void startTest() {
 		log.info("CatalogAndPriceContent test starts");
+//		if (driver.toString().equals("FirefoxDriver: firefox on XP (null)")) {
+//			driver = new FirefoxDriver();
+//		}
 	}
 	
 	@Test
 	public void contentElementsTest() {
+		catalogPage = CatalogPage.goToCatalogPage(driver);
+		catalogPage.checkTitles();
+	}
+	
+	@Test
+	public void contentElementsTest2() {
 		catalogPage = CatalogPage.goToCatalogPage(driver);
 		catalogPage.checkTitles();
 	}
