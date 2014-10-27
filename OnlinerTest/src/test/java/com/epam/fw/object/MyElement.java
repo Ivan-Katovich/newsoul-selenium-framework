@@ -14,6 +14,7 @@ public class MyElement {
 	public MyElement(String name, String xpath, String type) {
 		this.xpath = xpath;
 		this.type = type;
+		this.name = name;
 	}
 
 	public String getXpath() {
