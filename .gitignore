@@ -1,5 +1,6 @@
 OnlinerTest/.settings/
 OnlinerTest/target/
+OnlinerTest/src/test/resources/screenshots/
 .classpath
 .project
 .metadata/
