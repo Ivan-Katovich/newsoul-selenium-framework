@@ -19,7 +19,7 @@ public class MultiServices {
 	public static void errorShutdown(Options options) {
 		log.info("enter to function errorShutdown");
 		getMyScreenshot(options);
-		options.getDriver().quit();
+//		options.getDriver().quit();
 		Thread.currentThread().stop();;
 	}
 	
