@@ -95,7 +95,7 @@ public class WebElementsShop {
     }
     
     public static void assertElementAttributeHasValue(MyElement myElement, String attributeName, String attributeValue, WebDriver driver) {
-    	log.info("enter to function assertElementContainsText with element '" + myElement.getName() + "'");
+    	log.info("enter to function assertElementAttributeHasValue with element '" + myElement.getName() + "'");
     	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
