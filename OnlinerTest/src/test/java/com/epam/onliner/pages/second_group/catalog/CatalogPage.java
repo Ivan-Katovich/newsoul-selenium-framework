@@ -41,7 +41,7 @@ public class CatalogPage extends SecondGroupPage {
 	
 	public void checkTitles() {
 		WebElementsShop.assertElementsNumber(catalogAndPriceTitles, "more or equal", 35, driver);
-		WebElementsShop.assertElementContainsText(photoAndVideoTitle, "Фото и Видео", driver);
+		WebElementsShop.assertElementContainsText(photoAndVideoTitle, "Фото и Видеоtr", driver);
 		WebElementsShop.assertElementContainsTextPosition(catalogAndPriceTitles, "Фото и Видео", 4, driver);
 	}
 	
