@@ -12,6 +12,7 @@ import com.epam.fw.shop.PageShop;
 import com.epam.fw.shop.WebElementsShop;
 import com.epam.onliner.pages.Page;
 import com.epam.onliner.pages.first_group.FristGroupPage;
+import com.epam.onliner.pages.second_group.catalog.CatalogPage;
 
 import static com.epam.onliner.data.ConstantData.*;
 
@@ -32,33 +33,38 @@ public class MainPage extends FristGroupPage {
 		return new MainPage(driver);
 	}
 	
+	public CatalogPage goToCatalogPageLink () {
+		WebElementsShop.clickOnElement(catalogLink, this.driver);
+		return new CatalogPage (this.driver);
+	}
+	
 	public void bustAllPages() throws InterruptedException {
 		log.info("function starts");
-		WebElementsShop.clickOnElement(technologyLinc, this.driver);
+		WebElementsShop.clickOnElement(technologyLink, this.driver);
 		log.info("after technology");
 		Thread.sleep(3000);
-		WebElementsShop.clickOnElement(technologyTestLinc, this.driver);
+		WebElementsShop.clickOnElement(technologyTestLink, this.driver);
 		log.info("after technologyTest");
 		Thread.sleep(3000);
-		WebElementsShop.clickOnElement(peopleLinc, this.driver);
+		WebElementsShop.clickOnElement(peopleLink, this.driver);
 		log.info("after people");
 		Thread.sleep(3000);
-		WebElementsShop.clickOnElement(realtyLinc, this.driver);
+		WebElementsShop.clickOnElement(realtyLink, this.driver);
 		Thread.sleep(3000);
 		log.error("function ends");
 	}
 	
 	public void elementsPresentAndHasText() throws InterruptedException {
 		log.info("function starts");
-		WebElementsShop.assertElementPresent(technologyLinc, this.driver);
+		WebElementsShop.assertElementPresent(technologyLink, this.driver);
 		Thread.sleep(3000);
-		WebElementsShop.assertElementHasText(technologyLinc, "Технологии", this.driver);
+		WebElementsShop.assertElementHasText(technologyLink, "Технологии", this.driver);
 		log.info("after technology");
 		Thread.sleep(3000);
-		WebElementsShop.assertElementPresent(technologyTestLinc, this.driver);
+		WebElementsShop.assertElementPresent(technologyTestLink, this.driver);
 		log.info("after technologyTest");
 		Thread.sleep(3000);
-		WebElementsShop.assertElementPresent(peopleLinc, this.driver);
+		WebElementsShop.assertElementPresent(peopleLink, this.driver);
 		log.info("after people");
 		
 	}

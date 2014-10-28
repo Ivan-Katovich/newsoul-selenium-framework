@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.epam.onliner.pages.first_group.main.MainPage;
 import com.epam.onliner.pages.second_group.catalog.CatalogPage;
 import com.epam.onliner.tests.BaseTestShell;
 import com.epam.onliner.tests.OpenTest;
@@ -14,10 +15,12 @@ public class CatalogAndPriceContent extends BaseTestShell{
 	
 	private static final Logger log = Logger.getLogger(CatalogAndPriceContent.class);
 	private static CatalogPage catalogPage;
+	private static MainPage mainPage;
+	
 	
 	@Before
 	public void startTest() {
-		log.info("CatalogAndPriceContent test starts");
+		log.info("\n \n=== CatalogAndPriceContent test starts === \n");
 //		if (driver.toString().equals("FirefoxDriver: firefox on XP (null)")) {
 //			driver = new FirefoxDriver();
 //		}
@@ -25,19 +28,21 @@ public class CatalogAndPriceContent extends BaseTestShell{
 	
 	@Test
 	public void contentElementsTest() {
-		catalogPage = CatalogPage.goToCatalogPage(driver);
-		catalogPage.checkTitles();
+		mainPage = MainPage.goToMainPage(driver);
+		catalogPage = mainPage.goToCatalogPageLink();
+		catalogPage.checkMusicAndVideoTitle();
 	}
 	
 	@Test
-	public void contentElementsTest2() {
+	public void contentMusicAndVideoBlockTest() {
 		catalogPage = CatalogPage.goToCatalogPage(driver);
-		catalogPage.checkTitles();
+		catalogPage.checkMusicAndVideoContent();
 	}
 	
 	@After
 	public void endTest() {
-		log.info("CatalogAndPriceContent test ends");
+		log.info("\n \n === CatalogAndPriceContent test ends === \n");
 	}
+	
 
 }
