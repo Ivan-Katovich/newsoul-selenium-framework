@@ -1,6 +1,8 @@
 package com.epam.fw.services;
 
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -249,8 +251,39 @@ public class WebElementsServices {
     			}
     		}
     	} else {
-    		log.info("Item type is " + itemType + " but needed groupOfElements ");
+    		log.warn("Item type is '" + itemType + "' but needed 'groupOfElements' ");
     		return -1;
+    	}
+    }
+    
+    public static Float getNumberFromElementText(Options options) {
+    	log.info("enter to function getNumberFromElementText with elements '" + options.getMyElement().getName() + "'");
+    	String text = getElementText(options);
+    	if (text.equals(null)) {
+    		return null;
+    	} else {
+    		Pattern pat = Pattern.compile("[0-9]+[.]?[0-9]*");
+    		Matcher mat = pat.matcher(text);
+    		if (mat.find()) {
+    			Float f = Float.parseFloat(mat.group());
+    			return f;
+    		} else {
+    			log.warn("No numbers in this text ");
+    			return null;
+    		}
+    	}
+    }
+    
+    public static ArrayList<WebElement> getArrayOfElements(Options options) {
+    	log.info("enter to function getArrayOfElements '" + options.getMyElement().getName() + "'");
+    	ArrayList<WebElement> list;
+    	String itemType = options.getMyElement().getType();
+    	if (itemType == "groupOfElements") {
+    		list = (ArrayList<WebElement>)options.getDriver().findElements(By.xpath(options.getMyElement().getXpath()));
+    		return list;
+    	} else {
+    		log.warn("Item type is '" + itemType + "' but needed 'groupOfElements' ");
+    		return null;
     	}
     }
      
