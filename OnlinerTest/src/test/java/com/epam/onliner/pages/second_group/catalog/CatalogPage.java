@@ -51,7 +51,7 @@ public class CatalogPage extends SecondGroupPage {
 	}
 	
 	public void checkMusicAndVideoContent() {
-		WebElementsShop.assertElementVisible(photoAndVideoItemsNum, driver);
+		WebElementsShop.assertElementContainsNumber(photoAndVideoItemsNum, driver);
 		WebElementsShop.assertElementsNumber(photoAndVideoElements, "equal", 12, driver);
 		WebElementsShop.assertElementsNumber(photoAndVideoMinElementsCoast, "equal", 12, driver);
 		WebElementsShop.assertElementContainsText(photoCameraMinCoast, "у.е.", driver);

@@ -202,14 +202,16 @@ public class WebElementsServices {
     
     public static int getElementWithTextPosition(Options options) {
     	log.info("enter to function getElementWithTextPosition ");
-    	String itemType = options.getMyElement().getType();
     	int matchNumber = 0;
     	int position = 0;
-    	if (itemType == "groupOfElements") {
-    		List<WebElement>elements = options.getDriver().findElements(By.xpath(options.getMyElement().getXpath()));
-    		for (WebElement element : elements) {
+    	ArrayList<WebElement> list = getArrayOfElements(options);
+    	if (list == null) {
+    		log.info("Item type is " + options.getMyElement().getType() + " but needed groupOfElements ");
+    		return -1;
+    	} else {
+    		for (WebElement element : list) {
     			if (options.getText().equals(element.getText())) {
-    				position = elements.indexOf(element) + 1;
+    				position = list.indexOf(element) + 1;
     				matchNumber =+ 1;
     			}
     		}
@@ -222,22 +224,21 @@ public class WebElementsServices {
     				return position;
     			}
     		}
-    	} else {
-    		log.info("Item type is " + itemType + " but needed groupOfElements ");
-    		return -1;
-    	}
+		}
     }
     
     public static int getElementContainsTextPosition(Options options) {
     	log.info("enter to function getElementContainsTextPosition ");
-    	String itemType = options.getMyElement().getType();
     	int matchNumber = 0;
     	int position = 0;
-    	if (itemType == "groupOfElements") {
-    		List<WebElement>elements = options.getDriver().findElements(By.xpath(options.getMyElement().getXpath()));
-    		for (WebElement element : elements) {
+    	ArrayList<WebElement> list = getArrayOfElements(options);
+    	if (list == null) {
+    		log.info("Item type is " + options.getMyElement().getType() + " but needed groupOfElements ");
+    		return -1;
+    	} else { 
+    		for (WebElement element : list) {
     			if (element.getText().indexOf(options.getText()) != -1) {
-    				position = elements.indexOf(element) + 1;
+    				position = list.indexOf(element) + 1;
     				matchNumber =+ 1;
     			}
     		}
@@ -250,10 +251,7 @@ public class WebElementsServices {
     				return position;
     			}
     		}
-    	} else {
-    		log.warn("Item type is '" + itemType + "' but needed 'groupOfElements' ");
-    		return -1;
-    	}
+		}
     }
     
     public static Float getNumberFromElementText(Options options) {
@@ -265,8 +263,8 @@ public class WebElementsServices {
     		Pattern pat = Pattern.compile("[0-9]+[.]?[0-9]*");
     		Matcher mat = pat.matcher(text);
     		if (mat.find()) {
-    			Float f = Float.parseFloat(mat.group());
-    			return f;
+    			Float numberInText = Float.parseFloat(mat.group());
+    			return numberInText;
     		} else {
     			log.warn("No numbers in this text ");
     			return null;
@@ -275,7 +273,7 @@ public class WebElementsServices {
     }
     
     public static ArrayList<WebElement> getArrayOfElements(Options options) {
-    	log.info("enter to function getArrayOfElements '" + options.getMyElement().getName() + "'");
+    	log.info("enter to function getArrayOfElements with group of elements '" + options.getMyElement().getName() + "'");
     	ArrayList<WebElement> list;
     	String itemType = options.getMyElement().getType();
     	if (itemType == "groupOfElements") {

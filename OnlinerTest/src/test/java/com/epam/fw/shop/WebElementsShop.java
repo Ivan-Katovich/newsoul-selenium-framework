@@ -11,13 +11,12 @@ import com.epam.fw.services.FieldsServices;
 import com.epam.fw.services.MultiServices;
 import com.epam.fw.services.WebElementsServices;
 
-public class WebElementsShop {
+public class WebElementsShop extends Shop{
 	
 	private static final Logger log = Logger.getLogger(WebElementsShop.class);
 	
 	public static void assertElementVisible(MyElement myElement, WebDriver driver) {
 		log.info("enter to function assertElementVisible with element '" + myElement.getName() + "'");
-		Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		if (WebElementsServices.waitElementIsVisible(options)) {
@@ -30,7 +29,6 @@ public class WebElementsShop {
 	
 	public static void assertElementPresent(MyElement myElement, WebDriver driver) {
 		log.info("enter to function assertElementPresent with element '" + myElement.getName() + "'");
-		Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		if (WebElementsServices.waitElementIsPresent(options)) {
@@ -43,7 +41,6 @@ public class WebElementsShop {
     
     public static void clickOnElement(MyElement myElement, WebDriver driver) {
     	log.info("enter to function clickOnElement with element '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		if (WebElementsServices.waitElementIsVisible(options)) {
@@ -57,7 +54,6 @@ public class WebElementsShop {
     
     public static void assertElementHasText(MyElement myElement, String expectedText, WebDriver driver) {
     	log.info("enter to function assertElementHasText with element '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
     	if (!WebElementsServices.waitElementIsVisible(options)) {
@@ -66,7 +62,6 @@ public class WebElementsShop {
     	} else {
     		String text = WebElementsServices.getElementText(options);
     		if (text == null || !text.equals(expectedText)) {
-    			log.error(myElement.getXpath());
     			log.error("Element '" + myElement.getName() + "' has text '" + text + "' but expexted '" + expectedText + "' shutdown");
     			MultiServices.errorShutdown(options);
     		} else {
@@ -77,7 +72,6 @@ public class WebElementsShop {
     
     public static void assertElementContainsText(MyElement myElement, String expectedText, WebDriver driver) {
     	log.info("enter to function assertElementContainsText with element '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
     	if (!WebElementsServices.waitElementIsVisible(options)) {
@@ -96,7 +90,6 @@ public class WebElementsShop {
     
     public static void assertElementAttributeHasValue(MyElement myElement, String attributeName, String attributeValue, WebDriver driver) {
     	log.info("enter to function assertElementAttributeHasValue with element '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		options.setName(attributeName);
@@ -116,7 +109,6 @@ public class WebElementsShop {
     
     public static void setElementAttributeValue(MyElement myElement, String attributeName, String attributeValue, WebDriver driver) {
     	log.info("enter to function setElementAttributeValue with element '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		options.setName(attributeName);
@@ -141,7 +133,6 @@ public class WebElementsShop {
     
     public static void assertElementsNumber(MyElement myElement, String compareType, int expectedNumber, WebDriver driver) {
     	log.info("enter to function assertElementsNumber with elements '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
     	int itemNumber = WebElementsServices.getElementsNumber(options);
@@ -199,7 +190,6 @@ public class WebElementsShop {
     
     public static void assertElementWithTextPosition(MyElement myElement, String elementText, int expectedPosition, WebDriver driver) {
     	log.info("enter to function assertElementWithTextPosition with element '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		options.setText(elementText);
@@ -229,7 +219,6 @@ public class WebElementsShop {
     
     public static void assertElementContainsTextPosition(MyElement myElement, String elementText, int expectedPosition, WebDriver driver) {
     	log.info("enter to function assertElementContainsTextPosition with element '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		options.setText(elementText);
@@ -257,7 +246,23 @@ public class WebElementsShop {
 		}
     }
     
-    
+    public static void assertElementContainsNumber(MyElement myElement, WebDriver driver) {
+    	log.info("enter to function assertElementContainsNumber with element '" + myElement.getName() + "'");
+		options.setDriver(driver);
+		options.setMyElement(myElement);
+		if (!WebElementsServices.waitElementIsVisible(options)) {
+			log.error("element '" + myElement.getName() + "' is not visible shutdown" );
+			MultiServices.errorShutdown(options);
+		} else {
+			Float numberInText = WebElementsServices.getNumberFromElementText(options);
+			if (numberInText == null) {
+				log.error("element '" + myElement.getName() + "' hasn't got a number in text " );
+				MultiServices.errorShutdown(options);
+			} else {
+				log.info("element '" + myElement.getName() + "' has te text which contains number '" + numberInText + "' " );
+			}
+		}
+    }
  
 
 }
