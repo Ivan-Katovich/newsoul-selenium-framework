@@ -12,13 +12,12 @@ import com.epam.fw.services.FieldsServices;
 import com.epam.fw.services.MultiServices;
 import com.epam.fw.services.WebElementsServices;
 
-public class FieldsShop {
+public class FieldsShop extends Shop {
 	
 	private static final Logger log = Logger.getLogger(FieldsShop.class);
 	  
     public static void fillFieldByValue(MyElement myElement, String value, WebDriver driver) {
     	log.info("enter to function fillFieldByValue '" + myElement.getName() + "'");
-    	Options options = new Options();
 		options.setDriver(driver);
 		options.setMyElement(myElement);
 		options.setText(value);
@@ -44,7 +43,6 @@ public class FieldsShop {
     
     public static void fillFormByProfile(LinkedHashMap<MyElement, String> map, WebDriver driver) {
     	log.info("enter to function fillFormByProfile");
-    	Options options = new Options();
     	options.setDriver(driver);
     	try {
     		for (MyElement element : map.keySet()) {

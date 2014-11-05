@@ -10,13 +10,12 @@ import com.epam.onliner.pages.*;
 
 import static com.epam.onliner.data.ConstantData.*;
 
-public class PageShop {
+public class PageShop extends Shop{
 	
 	private static final Logger log = Logger.getLogger(PageShop.class);
 	
 	public static void goToPage(String uri, WebDriver driver) {
 		log.info("enter to function goToPage with URL '" + uri + "'");
-		Options options = new Options();
 		options.setDriver(driver);
 		driver.get(uri);
 		if (PageServices.waitForPageLoaded(options)) {
@@ -24,6 +23,30 @@ public class PageShop {
 		} else {
 			log.error("page didn't load");
 			MultiServices.errorShutdown(options);
+		}
+	}
+	
+	public static void assertOnPageWithUrl(String expectedUri, WebDriver driver) {
+		log.info("enter to function assertOnPageWithUrl with URL '" + expectedUri + "'");
+		options.setDriver(driver);
+		String actualUri = PageServices.getPageCurrentUrl(options);
+		if (!actualUri.equals(expectedUri)) {
+			log.error("Page loaded with uri '" + actualUri + "' but expected uri was '" + expectedUri + "'");
+			MultiServices.errorShutdown(options);
+		} else {
+			log.info("actual and expected uri are the same and equal '" + expectedUri + "'");
+		}
+	}
+	
+	public static void assertCurrentUrlContainsStringItem(String stringItem, WebDriver driver) {
+		log.info("enter to function assertOnPageWithUrl with URL '" + stringItem + "'");
+		options.setDriver(driver);
+		String actualUri = PageServices.getPageCurrentUrl(options);
+		if (actualUri.indexOf(stringItem) == -1 || actualUri.equals(null)) {
+			log.error("Page loaded with uri '" + actualUri + "' doesn't contain string item '" + stringItem + "'");
+			MultiServices.errorShutdown(options);
+		} else {
+			log.info("actual uri is '" + actualUri + "' contains string item '" + stringItem + "'");
 		}
 	}
 	

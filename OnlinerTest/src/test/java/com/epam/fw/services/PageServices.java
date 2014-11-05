@@ -15,5 +15,16 @@ public class PageServices {
     	options.setMyElement(TOP_LOGO);
     	return WebElementsServices.waitElementIsVisible(options);
 	}
+	
+	public static String getPageCurrentUrl(Options options) {
+		log.info("enter to function getPageUrl");
+		try {
+			return options.getDriver().getCurrentUrl();
+		} catch (Exception e) {
+			log.error(e.getClass());
+			return null;
+		}
+		
+	}
 
 }

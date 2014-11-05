@@ -1,10 +1,5 @@
 package com.epam.onliner.pages.second_group.catalog;
 
-import static com.epam.onliner.pages.second_group.catalog.CatalogItemTypePage.dateOfEntryIn;
-import static com.epam.onliner.pages.second_group.catalog.CatalogItemTypePage.manufacturerDmenu;
-import static com.epam.onliner.pages.second_group.catalog.CatalogItemTypePage.mobileTypeDmenu;
-import static com.epam.onliner.pages.second_group.catalog.CatalogItemTypePage.priceMaxIn;
-import static com.epam.onliner.pages.second_group.catalog.CatalogItemTypePage.priceMinIn;
 
 import java.util.LinkedHashMap;
 
