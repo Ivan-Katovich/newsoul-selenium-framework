@@ -1,6 +1,7 @@
 package com.epam.onliner.pages.second_group.catalog.items;
 
 import static com.epam.onliner.data.ConstantData.*;
+
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.epam.fw.services.WebElementsServices;
 import com.epam.fw.shop.FieldsShop;
+import com.epam.fw.shop.ImageShop;
 import com.epam.fw.shop.PageShop;
 import com.epam.fw.shop.WebElementsShop;
 import com.epam.onliner.pages.second_group.catalog.CatalogItemTypePage;
@@ -30,6 +32,7 @@ public class MobileItemPage extends CatalogItemTypePage{
 		PageShop.assertOnPageWithUrl("http://catalog.onliner.by/mobile/", driver);
 		PageShop.assertCurrentUrlContainsStringItem("catalog", driver);
 		FieldsShop.fillFormByProfile(minimumFilterProfile, driver);
+		ImageShop.assertImageOnPage(topLogoImg, driver);
 //		FieldsShop.fillFieldByValue(manufacturerDmenu, "Apple", driver);
 //		FieldsShop.fillFieldByValue(priceMinIn, "300", driver);
 //		FieldsShop.fillFieldByValue(priceMaxIn, "500", driver);
