@@ -6,6 +6,8 @@ import org.sikuli.script.FindFailed;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 
+import com.epam.fw.object.MyImage;
+import com.epam.fw.services.ImageServices;
 import com.epam.fw.services.MultiServices;
 
 import static com.epam.onliner.data.ConstantData.*;
@@ -14,14 +16,14 @@ public class ImageShop extends Shop {
 	
 	private static final Logger log = Logger.getLogger(ImageShop.class);
 	
-	public static void assertImageOnPage(Pattern image, WebDriver driver) {
-		log.info("enter to function assertImageOnPage ");
-		Screen screen = new Screen();
-		try {
-			screen.wait(image, TIME_OUT);
-			log.info("image was found ");
-		} catch (FindFailed e) {
-			log.error("can't find this image ");
+	public static void assertImageOnPage(MyImage image, WebDriver driver) {
+		log.info("enter to function assertImageOnPage " + image.getName() + "'");
+		options.setDriver(driver);
+		options.setMyImage(image);
+		if (ImageServices.waitImageIsVisible(options)) {
+			log.info("image '" + image.getName() + "' was found ");
+		} else {
+			log.error("can't find image " + image.getName() + "'");
 			MultiServices.errorShutdown(options);
 		}
 	}
