@@ -4,11 +4,12 @@ import org.openqa.selenium.WebDriver;
 import org.sikuli.script.Pattern;
 
 import com.epam.fw.object.MyElement;
+import com.epam.fw.object.MyImage;
 
 public abstract class Page {
 	
 	protected static final MyElement topLogo = new MyElement("topLogo", "//img[@class='onliner_logo retina-off']", "webelement");
-	protected static final Pattern topLogoImg = new Pattern("src/test/resources/imgs/Onliner_logo.png");
+	protected static final MyImage topLogoImg = new MyImage("topLogoImg","src/test/resources/imgs/Onliner_logo.png", "logo");
 	
 	protected final WebDriver driver;
 	

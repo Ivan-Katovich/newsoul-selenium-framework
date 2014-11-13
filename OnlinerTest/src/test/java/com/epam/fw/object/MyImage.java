@@ -1,25 +1,25 @@
 package com.epam.fw.object;
 
-public class MyElement {
+public class MyImage {
 	
-	private String xpath;
+	private String path;
 	private String type;
 	private String name;
 	
-	public MyElement() {}
+	public MyImage() {}
 	
-	public MyElement(String name, String xpath, String type) {
-		this.xpath = xpath;
+	public MyImage(String name, String path, String type) {
+		this.path = path;
 		this.type = type;
 		this.name = name;
 	}
 
-	public String getXpath() {
-		return xpath;
+	public String getPath() {
+		return path;
 	}
 
-	public void setXpath(String xpath) {
-		this.xpath = xpath;
+	public void setPath(String path) {
+		this.path = path;
 	}
 
 	public String getType() {
