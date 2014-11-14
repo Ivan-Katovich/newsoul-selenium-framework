@@ -39,6 +39,12 @@ public class CatalogAndPriceContent extends BaseTestShell{
 		catalogPage.checkMusicAndVideoContent();
 	}
 	
+	@Test
+	public void checkPriceSorting() {
+		catalogPage = CatalogPage.goToCatalogPage(driver);
+		catalogPage.checkMusicAndVideoContent();
+	}
+	
 	@After
 	public void endTest() {
 		log.info("\n \n === CatalogAndPriceContent test ends === \n");

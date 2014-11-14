@@ -8,8 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import com.epam.fw.object.MyElement;
+import com.epam.fw.object.MyImage;
 import com.epam.fw.object.Options;
 import com.epam.fw.services.WebElementsServices;
+import com.epam.fw.shop.ImageShop;
 import com.epam.fw.shop.PageShop;
 import com.epam.fw.shop.WebElementsShop;
 import com.epam.onliner.pages.Page;
@@ -21,6 +23,7 @@ public class CatalogPage extends SecondGroupPage {
 	private static final Logger log = Logger.getLogger(CatalogPage.class);
 	
 	protected static final MyElement mobilePhonesLink = new MyElement("mobilePhonesLink", "//div[@class='b-catalogmain']/ul[3]/li[1]//a[2]", "WebElement");
+	protected static final MyElement photoCamerasLink = new MyElement("photoCamerasLink", "//div[@class='b-catalogmain']/ul[4]/li[1]//a[2]", "WebElement");
 	protected static final MyElement photoAndVideoLink = new MyElement("photoAndVideoLink", "//h1[@class='cm__h1'][4]", "WebElement");
 	protected static final MyElement photoAndVideoItemsNum = new MyElement("photoAndVideoItemsNum", "//h1[@class='cm__h1'][4]/sup", "WebElement");
 	protected static final MyElement photoCameraMinCoast = new MyElement("photoCameraMinCoast", "//ul[@class='b-catalogitems'][4]/descendant::sup[1]/a", "WebElement");
@@ -29,6 +32,7 @@ public class CatalogPage extends SecondGroupPage {
 	protected static final MyElement photoAndVideoElements = new MyElement("photoAndVideoElements", "//ul [@class='b-catalogitems'][4]/li", "groupOfElements");
 	protected static final MyElement photoAndVideoMinElementsCoast = new MyElement("photoAndVideoMinElementsCoast", "//ul[@class='b-catalogitems'][4]//sup/a", "groupOfElements");
 	
+	protected static final MyImage photoAndVideoSection = new MyImage("photoAndVideoSection", "src/test/resources/imgs/Photo_and_video_section.png", "body");
 	
 	
 	public CatalogPage(WebDriver driver) {
@@ -45,6 +49,11 @@ public class CatalogPage extends SecondGroupPage {
 		return new MobileItemPage(this.driver);
 	}
 	
+	public MobileItemPage goToPhotoCamerasSortByPriceLink() {
+		WebElementsShop.clickOnElement(photoCameraMinCoast, this.driver);
+		return new MobileItemPage(this.driver);
+	}
+	
 	public void checkMusicAndVideoTitle() {
 		WebElementsShop.assertElementsNumber(catalogAndPriceTitles, "equal", 45, driver);
 		WebElementsShop.assertElementContainsTextPosition(catalogAndPriceTitles, "Фото и Видео", 4, driver);
@@ -56,6 +65,7 @@ public class CatalogPage extends SecondGroupPage {
 		WebElementsShop.assertElementsNumber(photoAndVideoMinElementsCoast, "equal", 12, driver);
 		WebElementsShop.assertElementContainsText(photoCameraMinCoast, "у.е.", driver);
 		WebElementsShop.assertElementAttributeHasValue(photoCameraMinCoast, "href", "http://catalog.onliner.by/photo/~sort_by=price/", driver);
+		ImageShop.assertImageOnPage(photoAndVideoSection, driver);
 	}
 	
 	
