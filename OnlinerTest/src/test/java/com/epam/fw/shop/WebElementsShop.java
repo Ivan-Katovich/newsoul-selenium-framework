@@ -1,5 +1,7 @@
 package com.epam.fw.shop;
 
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 import org.eclipse.jetty.util.log.Log;
 import org.openqa.selenium.WebDriver;
@@ -182,7 +184,7 @@ public class WebElementsShop extends Shop{
 				}
 				break;
 			default:
-				log.error("Compare type is wrong. It can be only equal/more/less/more or equal/less or equal " );
+				log.error("Compare type is wrong. It can be only equal / more / less / more or equal / less or equal " );
 				MultiServices.errorShutdown(options);
 			}
     	}
@@ -260,6 +262,88 @@ public class WebElementsShop extends Shop{
 				MultiServices.errorShutdown(options);
 			} else {
 				log.info("element '" + myElement.getName() + "' has te text which contains number '" + numberInText + "' " );
+			}
+		}
+    }
+    
+    public static void assertOrderOfElementsNumbers(MyElement myElement, String compareType, WebDriver driver) {
+    	log.info("enter to function assertOrderOfElementsNumbers with element '" + myElement.getName() + "'");
+    	options.setDriver(driver);
+		options.setMyElement(myElement);
+		ArrayList<WebElement> list = WebElementsServices.getArrayOfElements(options);
+		if (list == null) {
+			log.error("can't create array with '" + myElement.getName() + "'" );
+			MultiServices.errorShutdown(options);
+		} else {
+			switch (compareType) {
+			case "equal":
+				for (int i = 1; i < list.size(); i++) {
+					options.setWebElement(list.get(i));
+					float num = WebElementsServices.getNumberFromElementText(options);
+					options.setWebElement(list.get(i-1));
+					float preNum = WebElementsServices.getNumberFromElementText(options);
+					if (num != preNum) {
+						log.error("Numbers in elements '" + myElement.getName() + "' is not equal ");
+						MultiServices.errorShutdown(options);
+					}
+					log.info("Items '" + myElement.getName() + "' have equal numbers " );
+				}
+				break;
+			case "more":
+				for (int i = 1; i < list.size(); i++) {
+					options.setWebElement(list.get(i));
+					float num = WebElementsServices.getNumberFromElementText(options);
+					options.setWebElement(list.get(i-1));
+					float preNum = WebElementsServices.getNumberFromElementText(options);
+					if (num <= preNum) {
+						log.error("Numbers in elements '" + myElement.getName() + "' don't increase ");
+						MultiServices.errorShutdown(options);
+					}
+					log.info("Numbers in elements '" + myElement.getName() + "' increase " );
+				}
+				break;
+			case "less":
+				for (int i = 1; i < list.size(); i++) {
+					options.setWebElement(list.get(i));
+					float num = WebElementsServices.getNumberFromElementText(options);
+					options.setWebElement(list.get(i-1));
+					float preNum = WebElementsServices.getNumberFromElementText(options);
+					if (num >= preNum) {
+						log.error("Numbers in elements '" + myElement.getName() + "' don't decrease ");
+						MultiServices.errorShutdown(options);
+					}
+					log.info("Numbers in elements '" + myElement.getName() + "' decrease " );
+				}
+				break;
+			case "more or equal":
+				for (int i = 1; i < list.size(); i++) {
+					options.setWebElement(list.get(i));
+					float num = WebElementsServices.getNumberFromElementText(options);
+					options.setWebElement(list.get(i-1));
+					float preNum = WebElementsServices.getNumberFromElementText(options);
+					if (num < preNum) {
+						log.error("Numbers in elements '" + myElement.getName() + "' don't increase and are not the same ");
+						MultiServices.errorShutdown(options);
+					}
+					log.info("Numbers in elements '" + myElement.getName() + "' increase or the same" );
+				}
+				break;
+			case "less or equal":
+				for (int i = 1; i < list.size(); i++) {
+					options.setWebElement(list.get(i));
+					float num = WebElementsServices.getNumberFromElementText(options);
+					options.setWebElement(list.get(i-1));
+					float preNum = WebElementsServices.getNumberFromElementText(options);
+					if (num > preNum) {
+						log.error("Numbers in elements '" + myElement.getName() + "' don't decrease and are not the same ");
+						MultiServices.errorShutdown(options);
+					}
+					log.info("Numbers in elements '" + myElement.getName() + "' decrease or the same" );
+				}
+				break;
+			default:
+				log.error("Compare type is wrong. It can be only equal / more / less / more or equal / less or equal " );
+				MultiServices.errorShutdown(options);
 			}
 		}
     }

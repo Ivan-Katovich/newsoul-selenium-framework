@@ -18,12 +18,18 @@ public class BaseTestShell {
 	public static void startTestComplect() throws Exception{
 		driver = new FirefoxDriver();
 //	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//	    driver.manage().window().maximize();
+	    driver.manage().window().maximize();
 	}
 	
 	@AfterClass
 	public static void shutdownTestComplect() throws Exception{
-	    driver.quit();
+//		driver.close();
+//		Thread.sleep(1000); 
+//	    driver.quit();
+	    Runtime.getRuntime().exec("taskkill /F /IM firefox.exe");
+	    Thread.sleep(5000);
+	    Runtime.getRuntime().exec("taskkill /F /IM plugin-container.exe");
+	    Runtime.getRuntime().exec("taskkill /F /IM WerFault.exe");
 	}
 
 }
