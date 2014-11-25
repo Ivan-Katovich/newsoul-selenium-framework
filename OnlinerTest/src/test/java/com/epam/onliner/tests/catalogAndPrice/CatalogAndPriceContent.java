@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.epam.onliner.pages.first_group.main.MainPage;
 import com.epam.onliner.pages.second_group.catalog.CatalogPage;
+import com.epam.onliner.pages.second_group.catalog.items.PhotoAndVideoPage;
 import com.epam.onliner.tests.BaseTestShell;
 import com.epam.onliner.tests.OpenTest;
 
@@ -16,6 +17,7 @@ public class CatalogAndPriceContent extends BaseTestShell{
 	private static final Logger log = Logger.getLogger(CatalogAndPriceContent.class);
 	private static CatalogPage catalogPage;
 	private static MainPage mainPage;
+	private static PhotoAndVideoPage photoAndVideoPage;
 	
 	
 	@Before
@@ -28,6 +30,7 @@ public class CatalogAndPriceContent extends BaseTestShell{
 	
 	@Test
 	public void contentElementsTest() {
+		log.info("\n \n=== contentElementsTest test executing === \n");
 		mainPage = MainPage.goToMainPage(driver);
 		catalogPage = mainPage.goToCatalogPageLink();
 		catalogPage.checkMusicAndVideoTitle();
@@ -35,6 +38,7 @@ public class CatalogAndPriceContent extends BaseTestShell{
 	
 	@Test
 	public void contentMusicAndVideoBlockTest() {
+		log.info("\n \n=== contentMusicAndVideoBlockTest test executing === \n");
 		catalogPage = CatalogPage.goToCatalogPage(driver);
 		catalogPage.checkMusicAndVideoContent();
 	}
@@ -42,7 +46,7 @@ public class CatalogAndPriceContent extends BaseTestShell{
 	@Test
 	public void checkPriceSorting() {
 		catalogPage = CatalogPage.goToCatalogPage(driver);
-		catalogPage.checkMusicAndVideoContent();
+		photoAndVideoPage = catalogPage.goToPhotoCamerasSortByPriceLink();
 	}
 	
 	@After
