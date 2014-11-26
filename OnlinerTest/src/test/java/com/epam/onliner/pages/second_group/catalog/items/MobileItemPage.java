@@ -38,7 +38,7 @@ public class MobileItemPage extends CatalogItemTypePage{
 		WebElementsShop.assertOrderOfElementsNumbers(itemsCoast, "more or equal", driver);
 		PageShop.getNotErrorScreenshot("mobile_page", driver);
 		WebElementsShop.setElementAttributeValue(manufacturerDmenu, "class", "psi2", driver);	
-		WebElementsShop.assertElementAttributeHasValue(manufacturerDmenu, "class", "psi1", driver);
+		WebElementsShop.assertElementAttributeHasValue(manufacturerDmenu, "class", "psi2", driver);
 
 	}
 
