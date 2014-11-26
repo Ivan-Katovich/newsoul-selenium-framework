@@ -18,24 +18,30 @@ public class MultiServices {
 	
 	public static void errorShutdown(Options options) {
 		log.info("enter to function errorShutdown");
-		getMyScreenshot(options);
+		String path = getMyScreenshot(options);
+		log.error("You can see screenshot with error '" + path + "'");
 //		options.getDriver().quit();
 		Thread.currentThread().stop();;
 	}
 	
-	public static void getMyScreenshot(Options options) {
+	public static String getMyScreenshot(Options options) {
 		log.info("enter to function getScreenshot");
 		SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy hh;mm;ss SSS zzz");
 		Date date = new Date(); 
-		String formattedDate= df.format(date);
+		String formattedDate; 
+		if (options.getName() == null) {
+			formattedDate= df.format(date);
+		} else {
+			formattedDate= df.format(date) + " " + options.getName();
+		}
 		File file = ((TakesScreenshot) options.getDriver()).getScreenshotAs(OutputType.FILE);
 		String path = "src/test/resources/screenshots/" + formattedDate + ".png";
 		File screen = new File(path);
 		try {
 			FileUtils.copyFile(file, screen);
-			log.error("You cat see the screenshot with error on this link " + screen.getAbsolutePath());
+			return screen.getAbsolutePath();
 		} catch (IOException e) {
-			log.error("have an error with get screenshot" + e);
+			return null;
 		}
 	}
 

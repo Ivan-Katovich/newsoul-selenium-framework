@@ -50,6 +50,19 @@ public class PageShop extends Shop{
 		}
 	}
 	
+	public static void getNotErrorScreenshot(String name, WebDriver driver) {
+		log.info("enter to function getNotErrorScreenshot ");
+		options.setDriver(driver);
+		options.setName(name);
+		String path = MultiServices.getMyScreenshot(options);
+		if (path == null) {
+			log.warn("can't make screnshot");
+		} else {
+			log.info("screenshot is successfully saved '" + path + "'");
+		}
+		
+	}
+	
 //	public static Page goToPage(Options options) {
 //		log.info("enter to function goToPage in shop");
 //		Page page;

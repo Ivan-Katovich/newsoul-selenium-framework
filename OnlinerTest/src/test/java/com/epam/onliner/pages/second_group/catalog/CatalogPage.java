@@ -23,11 +23,11 @@ public class CatalogPage extends SecondGroupPage {
 	
 	private static final Logger log = Logger.getLogger(CatalogPage.class);
 	
-	protected static final MyElement mobilePhonesLink = new MyElement("mobilePhonesLink", "//div[@class='b-catalogmain']/ul[3]/li[1]//a[2]", "WebElement");
-	protected static final MyElement photoCamerasLink = new MyElement("photoCamerasLink", "//div[@class='b-catalogmain']/ul[4]/li[1]//a[2]", "WebElement");
-	protected static final MyElement photoAndVideoLink = new MyElement("photoAndVideoLink", "//h1[@class='cm__h1'][4]", "WebElement");
-	protected static final MyElement photoAndVideoItemsNum = new MyElement("photoAndVideoItemsNum", "//h1[@class='cm__h1'][4]/sup", "WebElement");
-	protected static final MyElement photoCameraMinCoast = new MyElement("photoCameraMinCoast", "//ul[@class='b-catalogitems'][4]/descendant::sup[1]/a", "WebElement");
+	protected static final MyElement mobilePhonesLink = new MyElement("mobilePhonesLink", "//div[@class='b-catalogmain']/ul[3]/li[1]//a[2]", "webElement");
+	protected static final MyElement photoCamerasLink = new MyElement("photoCamerasLink", "//div[@class='b-catalogmain']/ul[4]/li[1]//a[2]", "webElement");
+	protected static final MyElement photoAndVideoLink = new MyElement("photoAndVideoLink", "//h1[@class='cm__h1'][4]", "webElement");
+	protected static final MyElement photoAndVideoItemsNum = new MyElement("photoAndVideoItemsNum", "//h1[@class='cm__h1'][4]/sup", "webElement");
+	protected static final MyElement photoCameraMinCoast = new MyElement("photoCameraMinCoast", "//ul[@class='b-catalogitems'][4]/descendant::sup[1]/a", "webElement");
 	
 	protected static final MyElement catalogAndPriceTitles = new MyElement("catalogAndPriceTitles", "//h1[@class='cm__h1']", "groupOfElements");
 	protected static final MyElement photoAndVideoElements = new MyElement("photoAndVideoElements", "//ul [@class='b-catalogitems'][4]/li", "groupOfElements");
@@ -47,11 +47,13 @@ public class CatalogPage extends SecondGroupPage {
 	
 	public MobileItemPage goToMobilePhonesLink() {
 		WebElementsShop.clickOnElement(mobilePhonesLink, this.driver);
+		PageShop.assertCurrentUrlContainsStringItem("http://catalog.onliner.by/mobile/", driver);
 		return new MobileItemPage(this.driver);
 	}
 	
 	public PhotoAndVideoPage goToPhotoCamerasSortByPriceLink() {
 		WebElementsShop.clickOnElement(photoCameraMinCoast, this.driver);
+		PageShop.assertCurrentUrlContainsStringItem("http://catalog.onliner.by/photo/", driver);
 		return new PhotoAndVideoPage(this.driver);
 	}
 	

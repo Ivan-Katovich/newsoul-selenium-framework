@@ -256,7 +256,7 @@ public class WebElementsServices {
     
     public static Float getNumberFromElementText(Options options) {
     	log.info("enter to function getNumberFromElementText with elements '" + options.getMyElement().getName() + "'");
-    	String text = getElementText(options);
+    	String text = getElementText(options).replace(" ", "");
     	if (text.equals(null)) {
     		return null;
     	} else {
@@ -280,7 +280,7 @@ public class WebElementsServices {
     		list = (ArrayList<WebElement>)options.getDriver().findElements(By.xpath(options.getMyElement().getXpath()));
     		return list;
     	} else {
-    		log.warn("Item type is '" + itemType + "' but needed 'groupOfElements' ");
+    		log.error("Item type is '" + itemType + "' but needed 'groupOfElements' ");
     		return null;
     	}
     }

@@ -47,6 +47,7 @@ public class CatalogAndPriceContent extends BaseTestShell{
 	public void checkPriceSorting() {
 		catalogPage = CatalogPage.goToCatalogPage(driver);
 		photoAndVideoPage = catalogPage.goToPhotoCamerasSortByPriceLink();
+		photoAndVideoPage.checkOrderOfPrices();
 	}
 	
 	@After

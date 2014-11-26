@@ -55,6 +55,9 @@ public class CatalogItemTypePage extends CatalogPage {
 	protected static final MyElement standbyMaxIn = new MyElement("standbyMaxIn", "//form[@name='filter']//input[@name='sp[standby][to]']", "text");
 	protected static final MyElement searchButton = new MyElement("searchButton", "//form[@name='filter']//input[@name='search']", "button");
 	
+	protected static final MyElement itemsCoast = new MyElement("itemsCoast", "//div[contains(@class,'pprice')]", "groupOfElements");
+	protected static final MyElement sortByPrice = new MyElement("sortByPrice", "//a[contains(@href,'sort_by=price')]", "webElement");
+	
 	// Profiles
 	
 	protected static final LinkedHashMap<MyElement, String> minimumFilterProfile = new LinkedHashMap<MyElement, String>(){{
