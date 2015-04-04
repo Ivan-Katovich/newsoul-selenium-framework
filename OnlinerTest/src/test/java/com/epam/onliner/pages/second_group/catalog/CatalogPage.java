@@ -23,8 +23,8 @@ public class CatalogPage extends SecondGroupPage {
 	
 	private static final Logger log = Logger.getLogger(CatalogPage.class);
 	
-	protected static final MyElement mobilePhonesLink = new MyElement("mobilePhonesLink", "//div[@class='b-catalogmain']/ul[3]/li[1]//a[2]", "WebElement");
-	protected static final MyElement photoCamerasLink = new MyElement("photoCamerasLink", "//div[@class='b-catalogmain']/ul[4]/li[1]//a[2]", "WebElement");
+	protected static final MyElement mobilePhonesLink = new MyElement("mobilePhonesLink", "//div[@class='b-catalogmain']/ul[2]/li[1]//a[2]", "WebElement");
+	protected static final MyElement photoCamerasLink = new MyElement("photoCamerasLink", "//div[@class='b-catalogmain']/ul[3]/li[1]//a[2]", "WebElement");
 	protected static final MyElement photoAndVideoLink = new MyElement("photoAndVideoLink", "//h1[@class='cm__h1'][4]", "WebElement");
 	protected static final MyElement photoAndVideoItemsNum = new MyElement("photoAndVideoItemsNum", "//h1[@class='cm__h1'][4]/sup", "WebElement");
 	protected static final MyElement photoCameraMinCoast = new MyElement("photoCameraMinCoast", "//ul[@class='b-catalogitems'][4]/descendant::sup[1]/a", "WebElement");
@@ -62,7 +62,7 @@ public class CatalogPage extends SecondGroupPage {
 	
 	public void checkMusicAndVideoContent() {
 		WebElementsShop.assertElementContainsNumber(photoAndVideoItemsNum, driver);
-		WebElementsShop.assertElementsNumber(photoAndVideoElements, "equal", 12, driver);
+		WebElementsShop.assertElementsNumber(photoAndVideoElements, "equal", 15, driver);
 		WebElementsShop.assertElementsNumber(photoAndVideoMinElementsCoast, "equal", 12, driver);
 		WebElementsShop.assertElementContainsText(photoCameraMinCoast, "у.е.", driver);
 		WebElementsShop.assertElementAttributeHasValue(photoCameraMinCoast, "href", "http://catalog.onliner.by/photo/~sort_by=price/", driver);

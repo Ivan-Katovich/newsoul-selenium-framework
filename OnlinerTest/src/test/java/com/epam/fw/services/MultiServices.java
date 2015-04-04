@@ -33,7 +33,7 @@ public class MultiServices {
 		File screen = new File(path);
 		try {
 			FileUtils.copyFile(file, screen);
-			log.error("You cat see the screenshot with error on this link " + screen.getAbsolutePath());
+			log.error("You can see the screenshot with error on this link " + screen.getAbsolutePath());
 		} catch (IOException e) {
 			log.error("have an error with get screenshot" + e);
 		}

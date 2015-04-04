@@ -28,20 +28,20 @@ public class MobileItemPage extends CatalogItemTypePage{
 		super(driver);
 	}
 	
-	public void completeFieldsWithValues() throws InterruptedException {
+	public void completeFieldsWithValues() {
 		PageShop.assertOnPageWithUrl("http://catalog.onliner.by/mobile/", driver);
 		PageShop.assertCurrentUrlContainsStringItem("catalog", driver);
 		FieldsShop.fillFormByProfile(minimumFilterProfile, driver);
-		ImageShop.assertImageOnPage(topLogoImg, driver);
+//		ImageShop.assertImageOnPage(topLogoImg, driver);
 //		FieldsShop.fillFieldByValue(manufacturerDmenu, "Apple", driver);
 //		FieldsShop.fillFieldByValue(priceMinIn, "300", driver);
 //		FieldsShop.fillFieldByValue(priceMaxIn, "500", driver);
 //		Select sel = new Select(driver.findElement(By.xpath(manufacturerDmenu.getXpath())));
 //		sel.selectByVisibleText("Apple");
 //		WebElementsShop.clickOnElement(manufacturerDmenuApple, driver);
-		WebElementsShop.setElementAttributeValue(manufacturerDmenu, "class", "psi2", driver);	
-		Thread.sleep(1000);
-		WebElementsShop.assertElementAttributeHasValue(manufacturerDmenu, "class", "psi2", driver);
+//		WebElementsShop.setElementAttributeValue(manufacturerDmenu, "class", "psi2", driver);	
+//		Thread.sleep(1000);
+//		WebElementsShop.assertElementAttributeHasValue(manufacturerDmenu, "class", "psi2", driver);
 
 	}
 
