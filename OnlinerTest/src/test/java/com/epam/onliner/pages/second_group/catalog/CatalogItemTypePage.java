@@ -69,7 +69,7 @@ public class CatalogItemTypePage extends CatalogPage {
 		put(priceMinIn, "300");
 		put(priceMaxIn, "500");
 		put(dateOfEntryIn, "2013");
-		put(mobileTypeDmenu, "телефон");
+		put(mobileTypeDmenu, "смартфон");
 	}};
 		
 	

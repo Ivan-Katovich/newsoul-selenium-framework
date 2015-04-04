@@ -28,8 +28,8 @@ public class BaseTestShell {
 	    driver.quit();
 	    Runtime.getRuntime().exec("taskkill /F /IM firefox.exe");
 //	    Thread.sleep(5000);
-	    Runtime.getRuntime().exec("taskkill /F /IM plugin-container.exe");
-	    Runtime.getRuntime().exec("taskkill /F /IM WerFault.exe");
+//	    Runtime.getRuntime().exec("taskkill /F /IM plugin-container.exe");
+//	    Runtime.getRuntime().exec("taskkill /F /IM WerFault.exe");
 	}
 
 }
