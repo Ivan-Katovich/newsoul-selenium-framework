@@ -1,5 +1,7 @@
 package com.epam.onliner.tests;
 
+import static com.epam.onliner.data.ConstantData.TIME_OUT;
+
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
@@ -19,8 +21,11 @@ public class BaseTestShell {
 	
 	@BeforeClass
 	public static void startTestComplect() throws Exception{
+		URL gridHost = new URL("http://10.6.131.33:4444/wd/hub");
+//		URL gridHost = new URL("http://localhost:4444/wd/hub");
+//		URL gridHost = new URL("http://192.168.0.101:4444/wd/hub");
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
-		driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability);
+		driver = new RemoteWebDriver(gridHost, capability);
 //		driver = new FirefoxDriver();
 //	    driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 //	    driver.manage().window().maximize();
