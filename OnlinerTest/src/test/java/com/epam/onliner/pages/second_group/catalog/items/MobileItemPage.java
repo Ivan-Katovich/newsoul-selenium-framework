@@ -18,7 +18,7 @@ import com.epam.fw.shop.ImageShop;
 import com.epam.fw.shop.PageShop;
 import com.epam.fw.shop.WebElementsShop;
 import com.epam.onliner.pages.second_group.catalog.CatalogItemTypePage;
-import com.epam.onliner.tests.OpenTest;
+import com.epam.onliner.tests.Open;
 
 public class MobileItemPage extends CatalogItemTypePage{
 	

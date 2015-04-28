@@ -20,6 +20,12 @@ public final class ConstantData {
 	public static final String FLEA_MAEKET_PAGE_URI = "http://baraholka.onliner.by/";
 	public static final String FORUM_PAGE_URI = "http://forum.onliner.by/";
 	
+	//seleniun grid
+	public static final String SELENIUM_HOST_MOSVM = "10.6.131.33";
+	public static final String SELENIUM_HOST_LOCAL = "localhost";
+	public static final String SELENIUM_HOST_HOME = "192.168.0.101";
+	public static final String SELENIUM_PORT = "4444";
+	
 	//elements
 	public static final MyElement TOP_LOGO = new MyElement("topLogo", "//img[@class='onliner_logo retina-off']", "webelement");
 	

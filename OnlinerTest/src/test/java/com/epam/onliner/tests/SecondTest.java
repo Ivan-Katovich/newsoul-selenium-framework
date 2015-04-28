@@ -17,9 +17,9 @@ import com.epam.onliner.pages.second_group.catalog.CatalogItemTypePage;
 import com.epam.onliner.pages.second_group.catalog.CatalogPage;
 import com.epam.onliner.pages.second_group.catalog.items.MobileItemPage;
 
-public class OpenTest extends BaseTestShell{
-	
-	private static final Logger log = Logger.getLogger(OpenTest.class);
+public class SecondTest extends AltTestShell {
+
+	private static final Logger log = Logger.getLogger(SecondTest.class);
 	private static MainPage mainPage;
 	private static CatalogPage catalogPage;
 	private static CatalogItemTypePage catalogItemType;
@@ -27,6 +27,7 @@ public class OpenTest extends BaseTestShell{
 	
 	@Before
 	public void startTest() {
+//		http://adeptqa.blogspot.com/2012/12/seleniumtestng-20.html
 //		DOMConfigurator.configure("./log4j.xml");
 		log.info("\n \n === Open test starts === \n");
 	}
@@ -41,24 +42,25 @@ public class OpenTest extends BaseTestShell{
 //	}
 	
 	@Test
-	public void fillFilterFormTest() {
+	public void fillSecFilterFormTest() {
 		catalogPage = CatalogPage.goToCatalogPage(driver);
 		log.info("catalogPage was created");
 		mobileItemPage = catalogPage.goToMobilePhonesLink();
 		mobileItemPage.completeFieldsWithValues();
 	}
 	
-	@Test
-	public void fillFilterFormTest2() {
-		catalogPage = CatalogPage.goToCatalogPage(driver);
-		log.info("catalogPage was created");
-		mobileItemPage = catalogPage.goToMobilePhonesLink();
-		mobileItemPage.completeFieldsWithValues();
-	}
+//	@Test
+//	public void fillSecFilterFormTest2() {
+//		catalogPage = CatalogPage.goToCatalogPage(driver);
+//		log.info("catalogPage was created");
+//		mobileItemPage = catalogPage.goToMobilePhonesLink();
+//		mobileItemPage.completeFieldsWithValues();
+//	}
 	
 	@After
 	public void endTest() {
 		log.info("\n \n === Open test ends === \n");
 	}
 
+	
 }
